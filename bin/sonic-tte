@@ -24,7 +24,11 @@ else
     SHARE_DIR="/usr/share/sonic-tte"
 fi
 
-CENTER_TEXT="$BIN_DIR/center_text.py"
+if [ -f "$BIN_DIR/center_text.py" ]; then
+    CENTER_TEXT="$BIN_DIR/center_text.py"
+else
+    CENTER_TEXT="$SHARE_DIR/center_text.py"
+fi
 DEFAULT_FONT="$SHARE_DIR/fonts/Delta-Corps-Priest-1.flf"
 
 # XDG Standard: Check User Config, then Global, then Local fallback.
