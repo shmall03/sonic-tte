@@ -1,10 +1,12 @@
 # Sonic-TTE Configuration File
 
-# Path to the FIGlet font (.flf)
-FONT_PATH="$SCRIPT_DIR/fonts/Delta-Corps-Priest-1.flf"
+# Path to the FIGlet font (.flf).
+# Defaults to the system or local share folder if not specified.
+# FONT_PATH="/usr/share/sonic-tte/fonts/Delta-Corps-Priest-1.flf"
 
-# Output file for the ASCII art
-OUTPUT_FILE="$SCRIPT_DIR/cmd-saver.txt"
+# Output file for the ASCII art title (temporary storage).
+# Standard path is /tmp/sonic-tte-cmd.txt to avoid local directory writes.
+OUTPUT_FILE="/tmp/sonic-tte-cmd.txt"
 
 # Approximate characters per line before wrapping
 WRAP_WIDTH=20
