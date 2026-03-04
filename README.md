@@ -25,14 +25,14 @@ Ensure you have the following tools installed:
    ```
 2. Make the launcher executable:
    ```bash
-   chmod +x sonic-tte.sh center_text.py
+   chmod +x bin/sonic-tte bin/center_text.py
    ```
 
 ## Configuration
 Sonic-TTE follows the **XDG Base Directory Specification**. It looks for configuration in:
 1. `~/.config/sonic-tte/config`
 2. `/etc/sonic-tte/config`
-3. `./sonic-tte.conf` (Local fallback)
+3. `share/sonic-tte.conf.example` (Fallback/Reference)
 
 Edit the config file to customize:
 - `WRAP_WIDTH`: How many characters per line before wrapping.
@@ -42,7 +42,7 @@ Edit the config file to customize:
 ## Usage
 Simply run the script:
 ```bash
-./sonic-tte.sh
+./bin/sonic-tte
 ```
 
 ### Controls

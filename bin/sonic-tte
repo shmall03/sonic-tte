@@ -15,14 +15,22 @@ for cmd in playerctl figlet python3 tte; do
     fi
 done
 
-# --- 2. Load Configuration ---
-SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
+# --- 2. Load Paths & Configuration ---
+BIN_DIR=$(dirname "$(readlink -f "$0")")
+# Support both local/dev (../share) and system (/usr/share/sonic-tte) paths
+if [ -d "$BIN_DIR/../share/fonts" ]; then
+    SHARE_DIR="$BIN_DIR/../share"
+else
+    SHARE_DIR="/usr/share/sonic-tte"
+fi
+
+CENTER_TEXT="$BIN_DIR/center_text.py"
+DEFAULT_FONT="$SHARE_DIR/fonts/Delta-Corps-Priest-1.flf"
 
 # XDG Standard: Check User Config, then Global, then Local fallback.
-# This allows AUR installations to be customized per-user without sudo.
 USER_CONF="${XDG_CONFIG_HOME:-$HOME/.config}/sonic-tte/config"
 GLOBAL_CONF="/etc/sonic-tte/config"
-LOCAL_CONF="$SCRIPT_DIR/sonic-tte.conf"
+LOCAL_CONF="$SHARE_DIR/sonic-tte.conf.example"
 
 if [ -f "$USER_CONF" ]; then
     source "$USER_CONF"
@@ -32,8 +40,8 @@ elif [ -f "$LOCAL_CONF" ]; then
     source "$LOCAL_CONF"
 else
     # Hardcoded fallback defaults if no config file is found.
-    FONT_PATH="$SCRIPT_DIR/fonts/Delta-Corps-Priest-1.flf"
-    OUTPUT_FILE="$SCRIPT_DIR/cmd-saver.txt"
+    FONT_PATH="$DEFAULT_FONT"
+    OUTPUT_FILE="/tmp/sonic-tte-cmd.txt"
     WRAP_WIDTH=20
     POLL_INTERVAL=2
     INCLUDE_EFFECTS=""
@@ -52,10 +60,10 @@ generate_ascii() {
     # tr: converts to uppercase for font compatibility.
     # fmt: wraps text to the configured width.
     # figlet: generates the ASCII art blocks.
-    # center_text.py: handles complex terminal centering logic.
+    # "$CENTER_TEXT": handles complex terminal centering logic.
     echo "$title" | tr '[:lower:]' '[:upper:]' | fmt -w "$WRAP_WIDTH" | \
         figlet -f "$FONT_PATH" -w 1000 | \
-        "$SCRIPT_DIR/center_text.py" > "$OUTPUT_FILE.tmp"
+        "$CENTER_TEXT" > "$OUTPUT_FILE.tmp"
     
     # Atomic move to prevent 'tte' from reading a partial file.
     mv "$OUTPUT_FILE.tmp" "$OUTPUT_FILE"
