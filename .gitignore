@@ -1,0 +1,6 @@
+# Sonic-TTE Runtime Files
+cmd-saver.txt
+*.tmp
+
+# System files
+.DS_Store
