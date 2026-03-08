@@ -17,8 +17,10 @@ done
 
 # --- 2. Load Paths & Configuration ---
 BIN_DIR=$(dirname "$(readlink -f "$0")")
-# Support both local/dev (../share) and system (/usr/share/sonic-tte) paths
-if [ -d "$BIN_DIR/../share/fonts" ]; then
+
+# Support both local/dev and system paths.
+# We look for a project-specific file to determine if we are in the repo.
+if [ -f "$BIN_DIR/../share/fonts/Delta-Corps-Priest-1.flf" ]; then
     SHARE_DIR="$BIN_DIR/../share"
 else
     SHARE_DIR="/usr/share/sonic-tte"
@@ -31,6 +33,14 @@ else
 fi
 DEFAULT_FONT="$SHARE_DIR/fonts/Delta-Corps-Priest-1.flf"
 
+# Set hardcoded defaults first so they can be overridden by config files.
+FONT_PATH="$DEFAULT_FONT"
+OUTPUT_FILE="/tmp/sonic-tte-cmd.txt"
+WRAP_WIDTH=20
+POLL_INTERVAL=2
+INCLUDE_EFFECTS=""
+EXCLUDE_EFFECTS=""
+
 # XDG Standard: Check User Config, then Global, then Local fallback.
 USER_CONF="${XDG_CONFIG_HOME:-$HOME/.config}/sonic-tte/config"
 GLOBAL_CONF="/etc/sonic-tte/config"
@@ -42,14 +52,6 @@ elif [ -f "$GLOBAL_CONF" ]; then
     source "$GLOBAL_CONF"
 elif [ -f "$LOCAL_CONF" ]; then
     source "$LOCAL_CONF"
-else
-    # Hardcoded fallback defaults if no config file is found.
-    FONT_PATH="$DEFAULT_FONT"
-    OUTPUT_FILE="/tmp/sonic-tte-cmd.txt"
-    WRAP_WIDTH=20
-    POLL_INTERVAL=2
-    INCLUDE_EFFECTS=""
-    EXCLUDE_EFFECTS=""
 fi
 
 TTE_PID=0
