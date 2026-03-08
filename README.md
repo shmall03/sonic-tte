@@ -1,68 +1,84 @@
-# Sonic-TTE: The High-Impact Media Screensaver
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shmall03/sonic-tte/main/share/Sonic-TTE_Icon.png" width="128" height="128" />
+</p>
 
-**Sonic-TTE** is a high-impact, animated media screensaver for your terminal, built for the Arch/Hyprland community. It monitors your music playback (via `playerctl`) and displays your current song title in beautifully centered, high-contrast ASCII art, all animated with the powerful **TerminalTextEffects**.
+# 🔊 Sonic-TTE: High-Impact Media Screensaver
 
-## Features
-- **Event-Driven Updates**: Detects song changes immediately via `playerctl --follow`.
-- **Responsive Centering**: Dynamically calculates terminal size and text ink-width for pixel-perfect centering.
-- **Dynamic Animation**: Randomly cycles through 30+ terminal effects from `terminaltexteffects`.
-- **Smart Wrapping**: Ensures long song titles wrap cleanly without breaking words.
-- **Interactive Controls**: Skip animations or exit with simple keybinds.
+[![Arch Linux](https://img.shields.io/badge/OS-Arch%20Linux-1793d1?logo=arch-linux&logoColor=white)](https://aur.archlinux.org/packages/sonic-tte-git)
+[![Omarchy](https://img.shields.io/badge/Distro-Omarchy-8a2be2?logo=arch-linux&logoColor=white)](https://github.com/basecamp/omarchy)
+[![Hyprland](https://img.shields.io/badge/WM-Hyprland-33ccff?logo=hyprland&logoColor=white)](https://hyprland.org/)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![TerminalTextEffects](https://img.shields.io/badge/Powered%20By-TerminalTextEffects-ff69b4)](https://github.com/ChrisBuilds/terminaltexteffects)
 
-## Installation
+**Sonic-TTE** is a high-octane, event-driven animated screensaver for your terminal. Designed for the Arch & Hyprland communities, it transforms your current music playback into a living ASCII art performance.
 
-### 1. Requirements
-Ensure you have the following tools installed:
-- `playerctl` (for media monitoring)
-- `figlet` (for ASCII generation)
-- `python-terminaltexteffects` (available in AUR or `omarchy` repo as `python-terminaltexteffects` / `tte`)
+---
 
-### 2. Arch Linux (AUR)
-The recommended way to install on Arch Linux is via the AUR:
+## ✨ Visuals
+
+![Example gif](example.gif)
+
+---
+
+## 🚀 Installation
+
+### 1. Arch Linux (The Pro Way)
+Install directly from the **AUR** using your favorite helper:
+
 ```bash
-# Using paru
+# Using paru (Recommended)
 paru -S sonic-tte-git
 
 # Using yay
 yay -S sonic-tte-git
 ```
 
-### 3. Manual / Development Setup
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/shmall03/sonic-tte.git
-   cd sonic-tte
-   ```
-2. Make the launcher executable:
-   ```bash
-   chmod +x bin/sonic-tte bin/center_text.py
-   ```
-3. Run directly from the repo:
-   ```bash
-   ./bin/sonic-tte
-   ```
-
-## Configuration
-Sonic-TTE follows the **XDG Base Directory Specification**. It searches for configuration in this order:
-1. `~/.config/sonic-tte/config`
-2. `/etc/sonic-tte/config`
-3. `./share/sonic-tte.conf.example` (Fallback/Reference)
-
-### Customizable Variables:
-- `FONT_PATH`: Absolute path to your `.flf` font (defaults to the included `Delta-Corps-Priest-1.flf`).
-- `WRAP_WIDTH`: Maximum characters per line before wrapping (default: 20).
-- `INCLUDE_EFFECTS`: Space-separated list of specific animations (e.g., `burn matrix decrypt`).
-- `EXCLUDE_EFFECTS`: Animations you wish to skip.
-
-## Usage
-Simply run the script:
-```bash
-sonic-tte
-```
-
-### Controls
-- **[SPACE]**: Skip the current effect and trigger a new random one.
-- **[Q]**: Gracefully exit the program.
+### 2. Dependencies
+If installing manually, ensure you have:
+- `playerctl` (Media monitoring)
+- `figlet` (ASCII generation)
+- `python-terminaltexteffects` (The engine)
 
 ---
-*Created for aesthetic terminal enthusiasts. Part of the Omarchy & Arch + Hyprland communities.*
+
+## 🎨 Omarchy Integration
+
+Want to add Sonic-TTE to your Omarchy dash? It's easy!
+
+1. Open the **Omarchy Menu** (`SUPER` + `ALT` + `SPACE`).
+2. Navigate to **'Install'** ➔ **'TUI'**.
+3. **Name**: `Sonic TTE`.
+4. **Command**: `sonic-tte`.
+5. **Window Type**: Choose *either* `floating` or `tiling` window type! Either will work.
+6. **Icon URL**: `https://raw.githubusercontent.com/shmall03/sonic-tte/main/share/Sonic-TTE_Icon.png`
+7. **Enjoy!** ✨
+
+---
+
+## 🛠️ Configuration
+
+Sonic-TTE follows the **XDG** standard. Custom settings live in:
+`~/.config/sonic-tte/config`
+
+### Key Options:
+| Variable | Description | Default |
+| :--- | :--- | :--- |
+| `WRAP_WIDTH` | Chars per line before wrapping | `20` |
+| `POLL_INTERVAL`| Delay when nothing is playing | `2` |
+| `INCLUDE_EFFECTS`| Space-separated list of effects | *(All)* |
+| `EXCLUDE_EFFECTS`| Effects to skip | *(None)* |
+
+---
+
+## ⌨️ Keybinds
+
+| Key | Action |
+| :--- | :--- |
+| `[SPACE]` | Skip current animation & roll a new one |
+| `[Q]` | Graceful Exit |
+
+---
+
+<p align="center">
+  <i>Created with ❤️ for aesthetic terminal enthusiasts. Part of the <b>Omarchy</b> & <b>Arch + Hyprland</b> communities.</i>
+</p>
