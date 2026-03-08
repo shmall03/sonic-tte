@@ -1,6 +1,13 @@
-# Sonic-TTE Runtime Files
-cmd-saver.txt
+# Arch Linux Build Artifacts
+/src/
+/pkg/
+*.pkg.tar.zst
+*.log
+
+# Sonic-TTE Runtime
 *.tmp
 
-# System files
+# System Files
 .DS_Store
+.idea/
+.vscode/
