@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/shmall03/sonic-tte/main/share/Sonic-TTE_Icon.png" width="128" height="128" />
-</p>
-
 # 🔊 Sonic-TTE: High-Impact Media Screensaver
 
 [![Arch Linux](https://img.shields.io/badge/OS-Arch%20Linux-1793d1?logo=arch-linux&logoColor=white)](https://aur.archlinux.org/packages/sonic-tte-git)
@@ -50,7 +46,7 @@ Want to add Sonic-TTE to your Omarchy dash? It's easy!
 3. **Name**: `Sonic TTE`.
 4. **Command**: `sonic-tte`.
 5. **Window Type**: Choose *either* `floating` or `tiling` window type! Either will work.
-6. **Icon URL**: `https://raw.githubusercontent.com/shmall03/sonic-tte/main/share/Sonic-TTE_Icon.png`
+6. **Icon URL**: Use your own favorite icon URL (e.g. from [Flaticon](https://www.flaticon.com)).
 7. **Enjoy!** ✨
 
 ---

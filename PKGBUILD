@@ -30,11 +30,6 @@ package() {
   install -Dm755 bin/center_text.py "$pkgdir/usr/share/$_pkgname/center_text.py"
   install -Dm644 share/fonts/Delta-Corps-Priest-1.flf "$pkgdir/usr/share/$_pkgname/fonts/Delta-Corps-Priest-1.flf"
   install -Dm644 share/sonic-tte.conf.example "$pkgdir/usr/share/$_pkgname/sonic-tte.conf.example"
-  
-  # Install icon if it exists in the repo
-  if [ -f "share/Sonic-TTE_Icon.png" ]; then
-    install -Dm644 "share/Sonic-TTE_Icon.png" "$pkgdir/usr/share/$_pkgname/Sonic-TTE_Icon.png"
-  fi
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
