@@ -17,11 +17,15 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  # This version is cleaner and handles the "no tags" case properly
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+
+  # 1. Explicitly check if git-describe works
+  if git describe --long --tags >/dev/null 2>&1; then
+    # It worked! Now we can safely pipe it to sed.
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  else
+    # It failed! Now we provide the absolute fallback.
     printf "0.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  fi
 }
 
 package() {
