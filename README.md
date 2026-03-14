@@ -10,6 +10,16 @@
 
 ---
 
+## ✨ Features
+
+- 🚀 **Event-Driven**: Monitors music playback via `playerctl` with near-zero latency.
+- 📐 **Smart Resizing**: Automatically adapts to terminal window resizing (`SIGWINCH`) without breaking the animation.
+- 🔒 **Secure & Robust**: Multi-user safe (via user-specific temp files) and features a secure configuration parser.
+- 🎨 **Fully Customizable**: Support for any FIGlet font and fine-grained control over animation effects.
+- 🔌 **Agnostic**: Works with Spotify, Firefox, VLC, and any player supporting the MPRIS spec.
+
+---
+
 ## ✨ Visuals
 
 ![Example gif](example.gif)
@@ -59,10 +69,12 @@ Sonic-TTE follows the **XDG** standard. Custom settings live in:
 ### Key Options:
 | Variable | Description | Default |
 | :--- | :--- | :--- |
+| `PLAYER` | Target a specific player (e.g. `spotify`) | *(All)* |
 | `WRAP_WIDTH` | Chars per line before wrapping | `20` |
-| `POLL_INTERVAL`| Delay when nothing is playing | `2` |
+| `POLL_INTERVAL`| Delay when nothing is playing (sec) | `2` |
 | `INCLUDE_EFFECTS`| Space-separated list of effects | *(All)* |
 | `EXCLUDE_EFFECTS`| Effects to skip | *(None)* |
+| `FONT_PATH` | Path to your favorite FIGlet `.flf` font | *(Bundled)* |
 
 ---
 

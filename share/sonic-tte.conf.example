@@ -5,14 +5,18 @@
 # FONT_PATH="/usr/share/sonic-tte/fonts/Delta-Corps-Priest-1.flf"
 
 # Output file for the ASCII art title (temporary storage).
-# Standard path is /tmp/sonic-tte-cmd.txt to avoid local directory writes.
-OUTPUT_FILE="/tmp/sonic-tte-cmd.txt"
+# Standard path is /tmp/sonic-tte-$(id -u).txt to avoid multi-user conflicts.
+# OUTPUT_FILE="/tmp/sonic-tte-cmd.txt"
 
 # Approximate characters per line before wrapping
 WRAP_WIDTH=20
 
 # Delay (in seconds) between checks if no song is playing
 POLL_INTERVAL=2
+
+# Optional: Target a specific player (e.g., spotify, firefox, vlc).
+# If empty, all active players are monitored.
+PLAYER=""
 
 # Optional: List of TTE effects to include (space-separated)
 # If empty, all effects are used.
